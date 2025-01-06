@@ -127,6 +127,7 @@ class announce(OpenRTM_aist.DataFlowComponentBase):
         try:
             if self._placeIn.isNew():
                 place  = self._placeIn.read() 
+                print("make file")
                 self.file = makefile(place.data)
                 
             if self._command_inIn.isNew(): 
@@ -178,11 +179,11 @@ def speak(state, file_path):
 
 def makefile(place):        
     print(place)
-    file = '/home/rsdlab/workspace/announce/announce.mp3'
+    file = 'announce.mp3'
     text='今から' + place + 'へ移動します．ご注意ください'
     tts1 = gTTS(text, lang='ja')
     tts1.save(file)
-
+    
     return file
 	
 
